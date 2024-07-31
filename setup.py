@@ -27,7 +27,7 @@ setup(
         "baycomp==1.0.3",
         "bokeh",
         "BorutaShap @ git+https://github.com/pharmid/Boruta-Shap.git@be5ee7205328c9d905f48e344631bceac0844483",
-        "imbalanced-learn==0.11.0",
+        "imbalanced-learn==0.12.3",
         "IPython",
         "ipywidgets",
         "matplotlib==3.8.4",
