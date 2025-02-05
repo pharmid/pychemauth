@@ -35,7 +35,7 @@ setup(
         "numpy==1.26.4",
         "pandas==2.2.1",
         "pre-commit==3.3.3",
-        "scikit-learn==1.4.2",
+        "scikit-learn>=1.4.2",
         "scipy==1.13.0",
         "seaborn==0.13.2",
         "shap>=0.45.1",
