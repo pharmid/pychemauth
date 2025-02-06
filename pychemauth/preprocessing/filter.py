@@ -52,6 +52,28 @@ class MSC(TransformerMixin, BaseEstimator):
     [2] https://guifh.github.io/RNIR/MSC.html
     """
 
+    _tags = {
+            "allow_nan": False,
+            "array_api_support": False,
+            "binary_only": False,
+            "multilabel": False,
+            "multioutput": False,
+            "multioutput_only": False,
+            "no_validation": False,
+            "non_deterministic": False,
+            "pairwise": False,
+            "preserves_dtype": [np.float64],  # Only for transformers
+            "poor_score": True,
+            "requires_fit": True,
+            "requires_positive_X": False,
+            "requires_y": False,
+            "requires_positive_y": False,
+            "_skip_test": [],
+            "_xfail_checks": False,
+            "stateless": False,
+            "X_types": ["2darray"],
+        }
+    
     def __init__(self, Xref=None):
         """Instantiate the class."""
         self.set_params(
@@ -96,7 +118,7 @@ class MSC(TransformerMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
         )
         if y is not None:  # Just so this passes sklearn api checks
             X, y = check_X_y(
@@ -105,7 +127,7 @@ class MSC(TransformerMixin, BaseEstimator):
                 accept_sparse=False,
                 dtype=np.float64,
                 ensure_2d=True,
-                force_all_finite=True,
+                ensure_all_finite=True,
                 y_numeric=True,
             )
 
@@ -144,7 +166,7 @@ class MSC(TransformerMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=True,
         )  # Force a copy
         check_is_fitted(self, "is_fitted_")
@@ -185,29 +207,29 @@ class MSC(TransformerMixin, BaseEstimator):
 
         return self.transform(X)
 
-    def _get_tags(self):
-        """For compatibility with scikit-learn >=0.21."""
-        return {
-            "allow_nan": False,
-            "array_api_support": False,
-            "binary_only": False,
-            "multilabel": False,
-            "multioutput": False,
-            "multioutput_only": False,
-            "no_validation": False,
-            "non_deterministic": False,
-            "pairwise": False,
-            "preserves_dtype": [np.float64],  # Only for transformers
-            "poor_score": True,
-            "requires_fit": True,
-            "requires_positive_X": False,
-            "requires_y": False,
-            "requires_positive_y": False,
-            "_skip_test": [],
-            "_xfail_checks": False,
-            "stateless": False,
-            "X_types": ["2darray"],
-        }
+    # def _get_tags(self):
+    #     """For compatibility with scikit-learn >=0.21."""
+    #     return {
+    #         "allow_nan": False,
+    #         "array_api_support": False,
+    #         "binary_only": False,
+    #         "multilabel": False,
+    #         "multioutput": False,
+    #         "multioutput_only": False,
+    #         "no_validation": False,
+    #         "non_deterministic": False,
+    #         "pairwise": False,
+    #         "preserves_dtype": [np.float64],  # Only for transformers
+    #         "poor_score": True,
+    #         "requires_fit": True,
+    #         "requires_positive_X": False,
+    #         "requires_y": False,
+    #         "requires_positive_y": False,
+    #         "_skip_test": [],
+    #         "_xfail_checks": False,
+    #         "stateless": False,
+    #         "X_types": ["2darray"],
+    #     }
 
 
 class SNV(TransformerMixin, BaseEstimator):
@@ -299,7 +321,29 @@ class SNV(TransformerMixin, BaseEstimator):
     for Pattern Recognition with Near-Infrared Data. Anal. Chim. Acta 1999,
     382 (1), 87–103.
     """
-
+    
+    _tags = {
+            "allow_nan": False,
+            "array_api_support": False,
+            "binary_only": False,
+            "multilabel": False,
+            "multioutput": False,
+            "multioutput_only": False,
+            "no_validation": False,
+            "non_deterministic": False,
+            "pairwise": False,
+            "preserves_dtype": [np.float64],  # Only for transformers
+            "poor_score": True,
+            "requires_fit": True,
+            "requires_positive_X": False,
+            "requires_y": False,
+            "requires_positive_y": False,
+            "_skip_test": [],
+            "_xfail_checks": False,
+            "stateless": False,
+            "X_types": ["2darray"],
+        }
+    
     def __init__(self, robust=False, detrend=False, q=50):
         """Instantiate the class."""
         self.set_params(**{"robust": robust, "detrend": detrend, "q": q})
@@ -341,7 +385,7 @@ class SNV(TransformerMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
         )
         if y is not None:  # Just so this passes sklearn api checks
             X, y = check_X_y(
@@ -350,7 +394,7 @@ class SNV(TransformerMixin, BaseEstimator):
                 accept_sparse=False,
                 dtype=np.float64,
                 ensure_2d=True,
-                force_all_finite=True,
+                ensure_all_finite=True,
                 y_numeric=True,
             )
 
@@ -381,7 +425,7 @@ class SNV(TransformerMixin, BaseEstimator):
             copy=True,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
         )  # Force a copy
         check_is_fitted(self, "is_fitted_")
         if X.shape[1] != self.n_features_in_:
@@ -439,29 +483,29 @@ class SNV(TransformerMixin, BaseEstimator):
 
         return self.transform(X)
 
-    def _get_tags(self):
-        """For compatibility with scikit-learn >=0.21."""
-        return {
-            "allow_nan": False,
-            "array_api_support": False,
-            "binary_only": False,
-            "multilabel": False,
-            "multioutput": False,
-            "multioutput_only": False,
-            "no_validation": False,
-            "non_deterministic": False,
-            "pairwise": False,
-            "preserves_dtype": [np.float64],  # Only for transformers
-            "poor_score": True,
-            "requires_fit": True,
-            "requires_positive_X": False,
-            "requires_y": False,
-            "requires_positive_y": False,
-            "_skip_test": [],
-            "_xfail_checks": False,
-            "stateless": False,
-            "X_types": ["2darray"],
-        }
+    # def _get_tags(self):
+    #     """For compatibility with scikit-learn >=0.21."""
+    #     return {
+    #         "allow_nan": False,
+    #         "array_api_support": False,
+    #         "binary_only": False,
+    #         "multilabel": False,
+    #         "multioutput": False,
+    #         "multioutput_only": False,
+    #         "no_validation": False,
+    #         "non_deterministic": False,
+    #         "pairwise": False,
+    #         "preserves_dtype": [np.float64],  # Only for transformers
+    #         "poor_score": True,
+    #         "requires_fit": True,
+    #         "requires_positive_X": False,
+    #         "requires_y": False,
+    #         "requires_positive_y": False,
+    #         "_skip_test": [],
+    #         "_xfail_checks": False,
+    #         "stateless": False,
+    #         "X_types": ["2darray"],
+    #     }
 
 
 class SavGol(TransformerMixin, BaseEstimator):
@@ -504,7 +548,31 @@ class SavGol(TransformerMixin, BaseEstimator):
     See https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.savgol_filter.html
     for description of parameters.
     """
-
+    
+    _tags = {
+            "allow_nan": False,
+            "array_api_support": False,
+            "binary_only": False,
+            "multilabel": False,
+            "multioutput": False,
+            "multioutput_only": False,
+            "no_validation": False,
+            "non_deterministic": False,
+            "pairwise": False,
+            "preserves_dtype": [np.float64],  # Only for transformers
+            "poor_score": True,
+            "requires_fit": True,
+            "requires_positive_X": False,
+            "requires_y": False,
+            "requires_positive_y": False,
+            "_skip_test": [
+                "check_fit2d_1feature"  # Needs to have multiple features to fit to
+            ],
+            "_xfail_checks": False,
+            "stateless": False,
+            "X_types": ["2darray"],
+        }
+    
     def __init__(
         self,
         window_length,
@@ -568,7 +636,7 @@ class SavGol(TransformerMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
         )
 
         try:
@@ -613,7 +681,7 @@ class SavGol(TransformerMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
         )
         check_is_fitted(self, "is_fitted_")
         if X.shape[1] != self.n_features_in_:
@@ -655,28 +723,28 @@ class SavGol(TransformerMixin, BaseEstimator):
 
         return self.transform(X)
 
-    def _get_tags(self):
-        """For compatibility with scikit-learn >=0.21."""
-        return {
-            "allow_nan": False,
-            "array_api_support": False,
-            "binary_only": False,
-            "multilabel": False,
-            "multioutput": False,
-            "multioutput_only": False,
-            "no_validation": False,
-            "non_deterministic": False,
-            "pairwise": False,
-            "preserves_dtype": [np.float64],  # Only for transformers
-            "poor_score": True,
-            "requires_fit": True,
-            "requires_positive_X": False,
-            "requires_y": False,
-            "requires_positive_y": False,
-            "_skip_test": [
-                "check_fit2d_1feature"  # Needs to have multiple features to fit to
-            ],
-            "_xfail_checks": False,
-            "stateless": False,
-            "X_types": ["2darray"],
-        }
+    # def _get_tags(self):
+    #     """For compatibility with scikit-learn >=0.21."""
+    #     return {
+    #         "allow_nan": False,
+    #         "array_api_support": False,
+    #         "binary_only": False,
+    #         "multilabel": False,
+    #         "multioutput": False,
+    #         "multioutput_only": False,
+    #         "no_validation": False,
+    #         "non_deterministic": False,
+    #         "pairwise": False,
+    #         "preserves_dtype": [np.float64],  # Only for transformers
+    #         "poor_score": True,
+    #         "requires_fit": True,
+    #         "requires_positive_X": False,
+    #         "requires_y": False,
+    #         "requires_positive_y": False,
+    #         "_skip_test": [
+    #             "check_fit2d_1feature"  # Needs to have multiple features to fit to
+    #         ],
+    #         "_xfail_checks": False,
+    #         "stateless": False,
+    #         "X_types": ["2darray"],
+    #     }

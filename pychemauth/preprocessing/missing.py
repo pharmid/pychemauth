@@ -53,6 +53,28 @@ class LOD(TransformerMixin, BaseEstimator):
     >>> X_lod = itim.fit_transform(missing_X) # Will still have NaN's left representing missing values.
     """
 
+    _tags = {
+            "allow_nan": True,
+            "array_api_support": False,
+            "binary_only": False,
+            "multilabel": False,
+            "multioutput": False,
+            "multioutput_only": False,
+            "no_validation": False,
+            "non_deterministic": False,
+            "pairwise": False,
+            "preserves_dtype": [np.float64],  # Only for transformers
+            "poor_score": True,
+            "requires_fit": True,
+            "requires_positive_X": False,
+            "requires_y": False,
+            "requires_positive_y": False,
+            "_skip_test": ["check_fit_score_takes_y"],
+            "_xfail_checks": False,
+            "stateless": False,
+            "X_types": ["2darray"],
+        }
+    
     def __init__(
         self,
         lod=None,
@@ -109,7 +131,7 @@ class LOD(TransformerMixin, BaseEstimator):
             X,
             accept_sparse=False,
             dtype=np.float64,
-            force_all_finite="allow-nan",
+            ensure_all_finite="allow-nan",
             ensure_2d=True,
             copy=True,
         )
@@ -121,7 +143,7 @@ class LOD(TransformerMixin, BaseEstimator):
                 self.lod,
                 accept_sparse=False,
                 dtype=np.float64,
-                force_all_finite="allow-nan",
+                ensure_all_finite="allow-nan",
                 ensure_2d=False,
                 copy=True,
             )
@@ -137,7 +159,7 @@ class LOD(TransformerMixin, BaseEstimator):
                         self.lod_[mask],
                         accept_sparse=False,
                         dtype=np.float64,
-                        force_all_finite=True,
+                        ensure_all_finite=True,
                         ensure_2d=False,
                         copy=False,
                     )
@@ -208,7 +230,7 @@ class LOD(TransformerMixin, BaseEstimator):
             X,
             accept_sparse=False,
             dtype=np.float64,
-            force_all_finite="allow-nan",
+            ensure_all_finite="allow-nan",
             ensure_2d=True,
             copy=True,
         )
@@ -264,29 +286,29 @@ class LOD(TransformerMixin, BaseEstimator):
         else:
             return X_df.values
 
-    def _get_tags(self):
-        """For compatibility with scikit-learn >=0.21."""
-        return {
-            "allow_nan": True,
-            "array_api_support": False,
-            "binary_only": False,
-            "multilabel": False,
-            "multioutput": False,
-            "multioutput_only": False,
-            "no_validation": False,
-            "non_deterministic": False,
-            "pairwise": False,
-            "preserves_dtype": [np.float64],  # Only for transformers
-            "poor_score": True,
-            "requires_fit": True,
-            "requires_positive_X": False,
-            "requires_y": False,
-            "requires_positive_y": False,
-            "_skip_test": ["check_fit_score_takes_y"],
-            "_xfail_checks": False,
-            "stateless": False,
-            "X_types": ["2darray"],
-        }
+    # def _get_tags(self):
+    #     """For compatibility with scikit-learn >=0.21."""
+    #     return {
+    #         "allow_nan": True,
+    #         "array_api_support": False,
+    #         "binary_only": False,
+    #         "multilabel": False,
+    #         "multioutput": False,
+    #         "multioutput_only": False,
+    #         "no_validation": False,
+    #         "non_deterministic": False,
+    #         "pairwise": False,
+    #         "preserves_dtype": [np.float64],  # Only for transformers
+    #         "poor_score": True,
+    #         "requires_fit": True,
+    #         "requires_positive_X": False,
+    #         "requires_y": False,
+    #         "requires_positive_y": False,
+    #         "_skip_test": ["check_fit_score_takes_y"],
+    #         "_xfail_checks": False,
+    #         "stateless": False,
+    #         "X_types": ["2darray"],
+    #     }
 
 
 class PCA_IA(TransformerMixin, BaseEstimator):
@@ -365,6 +387,30 @@ class PCA_IA(TransformerMixin, BaseEstimator):
     >>> X_filled = itim.fit_transform(X_missing)
     """
 
+    _tags = {
+            "allow_nan": True,
+            "array_api_support": False,
+            "binary_only": False,
+            "multilabel": False,
+            "multioutput": False,
+            "multioutput_only": False,
+            "no_validation": False,
+            "non_deterministic": False,
+            "pairwise": False,
+            "preserves_dtype": [np.float64],  # Only for transformers
+            "poor_score": True,
+            "requires_fit": True,
+            "requires_positive_X": False,
+            "requires_y": False,
+            "requires_positive_y": False,
+            "_skip_test": [
+                "check_fit2d_1sample",  # This is supposed to fail
+            ],
+            "_xfail_checks": False,
+            "stateless": False,
+            "X_types": ["2darray"],
+        }
+    
     def __init__(
         self,
         n_components=1,
@@ -421,7 +467,7 @@ class PCA_IA(TransformerMixin, BaseEstimator):
             X,
             accept_sparse=False,
             dtype=np.float64,
-            force_all_finite="allow-nan",
+            ensure_all_finite="allow-nan",
             ensure_2d=True,
             copy=True,
         )
@@ -464,7 +510,7 @@ n_features [{}])] = [{}, {}].".format(
         X = check_array(
             X,
             accept_sparse=False,
-            force_all_finite="allow-nan",
+            ensure_all_finite="allow-nan",
             ensure_2d=True,
             copy=True,
             dtype=np.float64,
@@ -575,7 +621,7 @@ n_features [{}])] = [{}, {}].".format(
         X = check_array(
             X,
             accept_sparse=False,
-            force_all_finite="allow-nan",
+            ensure_all_finite="allow-nan",
             ensure_2d=True,
             copy=True,
             dtype=np.float64,
@@ -622,7 +668,7 @@ n_features [{}])] = [{}, {}].".format(
         X = check_array(
             X,
             accept_sparse=False,
-            force_all_finite="allow-nan",
+            ensure_all_finite="allow-nan",
             ensure_2d=True,
             copy=True,
             dtype=np.float64,
@@ -636,31 +682,31 @@ n_features [{}])] = [{}, {}].".format(
 
         return -sse
 
-    def _get_tags(self):
-        """For compatibility with scikit-learn >=0.21."""
-        return {
-            "allow_nan": True,
-            "array_api_support": False,
-            "binary_only": False,
-            "multilabel": False,
-            "multioutput": False,
-            "multioutput_only": False,
-            "no_validation": False,
-            "non_deterministic": False,
-            "pairwise": False,
-            "preserves_dtype": [np.float64],  # Only for transformers
-            "poor_score": True,
-            "requires_fit": True,
-            "requires_positive_X": False,
-            "requires_y": False,
-            "requires_positive_y": False,
-            "_skip_test": [
-                "check_fit2d_1sample",  # This is supposed to fail
-            ],
-            "_xfail_checks": False,
-            "stateless": False,
-            "X_types": ["2darray"],
-        }
+    # def _get_tags(self):
+    #     """For compatibility with scikit-learn >=0.21."""
+    #     return {
+    #         "allow_nan": True,
+    #         "array_api_support": False,
+    #         "binary_only": False,
+    #         "multilabel": False,
+    #         "multioutput": False,
+    #         "multioutput_only": False,
+    #         "no_validation": False,
+    #         "non_deterministic": False,
+    #         "pairwise": False,
+    #         "preserves_dtype": [np.float64],  # Only for transformers
+    #         "poor_score": True,
+    #         "requires_fit": True,
+    #         "requires_positive_X": False,
+    #         "requires_y": False,
+    #         "requires_positive_y": False,
+    #         "_skip_test": [
+    #             "check_fit2d_1sample",  # This is supposed to fail
+    #         ],
+    #         "_xfail_checks": False,
+    #         "stateless": False,
+    #         "X_types": ["2darray"],
+    #     }
 
 
 class PLS_IA(TransformerMixin, BaseEstimator):
@@ -736,7 +782,30 @@ class PLS_IA(TransformerMixin, BaseEstimator):
     ... max_iters=1000)
     >>> X_filled = itim.fit_transform(X_missing, y)
     """
-
+    _tags = {
+            "allow_nan": True,
+            "array_api_support": False,
+            "binary_only": False,
+            "multilabel": False,
+            "multioutput": False,
+            "multioutput_only": False,
+            "no_validation": False,
+            "non_deterministic": False,
+            "pairwise": False,
+            "preserves_dtype": [np.float64],  # Only for transformers
+            "poor_score": True,
+            "requires_fit": True,
+            "requires_positive_X": False,
+            "requires_y": False,
+            "requires_positive_y": False,
+            "_skip_test": [
+                "check_fit2d_1sample",  # This is supposed to fail
+            ],
+            "_xfail_checks": False,
+            "stateless": False,
+            "X_types": ["2darray"],
+        }
+    
     def __init__(
         self,
         n_components=1,
@@ -801,7 +870,7 @@ class PLS_IA(TransformerMixin, BaseEstimator):
         self.__Xtrain_ = check_array(
             X,
             accept_sparse=False,
-            force_all_finite="allow-nan",
+            ensure_all_finite="allow-nan",
             ensure_2d=True,
             copy=True,
             dtype=np.float64,
@@ -811,7 +880,7 @@ class PLS_IA(TransformerMixin, BaseEstimator):
         self.__ytrain_ = check_array(
             y,
             accept_sparse=False,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=True,
             dtype=np.float64,
             ensure_2d=False,  # Will be converted next
@@ -861,7 +930,7 @@ n_features [{}])] = [{}, {}].".format(
         X = check_array(
             X,
             accept_sparse=False,
-            force_all_finite="allow-nan",
+            ensure_all_finite="allow-nan",
             ensure_2d=True,
             copy=True,
             dtype=np.float64,
@@ -875,7 +944,7 @@ n_features [{}])] = [{}, {}].".format(
             y = check_array(
                 y,
                 accept_sparse=False,
-                force_all_finite=True,
+                ensure_all_finite=True,
                 copy=True,
                 dtype=np.float64,
                 ensure_2d=False,  # Will be converted next
@@ -1000,7 +1069,7 @@ n_features [{}])] = [{}, {}].".format(
         X = check_array(
             X,
             accept_sparse=False,
-            force_all_finite="allow-nan",
+            ensure_all_finite="allow-nan",
             ensure_2d=True,
             copy=True,
             dtype=np.float64,
@@ -1047,7 +1116,7 @@ n_features [{}])] = [{}, {}].".format(
         X = check_array(
             X,
             accept_sparse=False,
-            force_all_finite="allow-nan",
+            ensure_all_finite="allow-nan",
             ensure_2d=True,
             copy=True,
             dtype=np.float64,
@@ -1060,28 +1129,28 @@ n_features [{}])] = [{}, {}].".format(
 
         return -sse
 
-    def _get_tags(self):
-        """For compatibility with scikit-learn >=0.21."""
-        return {
-            "allow_nan": True,
-            "array_api_support": False,
-            "binary_only": False,
-            "multilabel": False,
-            "multioutput": False,
-            "multioutput_only": False,
-            "no_validation": False,
-            "non_deterministic": False,
-            "pairwise": False,
-            "preserves_dtype": [np.float64],  # Only for transformers
-            "poor_score": True,
-            "requires_fit": True,
-            "requires_positive_X": False,
-            "requires_y": False,
-            "requires_positive_y": False,
-            "_skip_test": [
-                "check_fit2d_1sample",  # This is supposed to fail
-            ],
-            "_xfail_checks": False,
-            "stateless": False,
-            "X_types": ["2darray"],
-        }
+    # def _get_tags(self):
+    #     """For compatibility with scikit-learn >=0.21."""
+    #     return {
+    #         "allow_nan": True,
+    #         "array_api_support": False,
+    #         "binary_only": False,
+    #         "multilabel": False,
+    #         "multioutput": False,
+    #         "multioutput_only": False,
+    #         "no_validation": False,
+    #         "non_deterministic": False,
+    #         "pairwise": False,
+    #         "preserves_dtype": [np.float64],  # Only for transformers
+    #         "poor_score": True,
+    #         "requires_fit": True,
+    #         "requires_positive_X": False,
+    #         "requires_y": False,
+    #         "requires_positive_y": False,
+    #         "_skip_test": [
+    #             "check_fit2d_1sample",  # This is supposed to fail
+    #         ],
+    #         "_xfail_checks": False,
+    #         "stateless": False,
+    #         "X_types": ["2darray"],
+    #     }

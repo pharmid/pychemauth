@@ -91,6 +91,30 @@ class PCR(RegressorMixin, BaseEstimator):
     methods," Pomerantsev, A., Journal of Chemometrics 22 (2008) 601-609.
     """
 
+    _tags = {
+            "allow_nan": False,
+            "array_api_support": False,
+            "binary_only": False,
+            "multilabel": False,
+            "multioutput": False,
+            "multioutput_only": False,
+            "no_validation": False,
+            "non_deterministic": False,
+            "pairwise": False,
+            "preserves_dtype": [np.float64],  # Only for transformers
+            "poor_score": True,
+            "requires_fit": True,
+            "requires_positive_X": False,
+            "requires_y": True,
+            "requires_positive_y": False,
+            "_skip_test": [
+                "check_fit2d_1sample",  # Can't fit 1D data
+            ],
+            "_xfail_checks": False,
+            "stateless": False,
+            "X_types": ["2darray"],
+        }
+    
     def __init__(
         self,
         n_components=1,
@@ -162,7 +186,7 @@ class PCR(RegressorMixin, BaseEstimator):
                 accept_sparse=False,
                 dtype=np.float64,
                 ensure_2d=True,
-                force_all_finite=True,
+                ensure_all_finite=True,
                 y_numeric=True,
                 copy=True,
             )
@@ -390,7 +414,7 @@ class PCR(RegressorMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -471,7 +495,7 @@ class PCR(RegressorMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -522,7 +546,7 @@ class PCR(RegressorMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -561,7 +585,7 @@ class PCR(RegressorMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             y_numeric=True,
             copy=True,
         )
@@ -598,7 +622,7 @@ class PCR(RegressorMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -645,7 +669,7 @@ class PCR(RegressorMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             y_numeric=True,
             copy=True,
         )
@@ -691,7 +715,7 @@ class PCR(RegressorMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             y_numeric=True,
             copy=True,
         )
@@ -915,28 +939,28 @@ class PCR(RegressorMixin, BaseEstimator):
 
         return axes
 
-    def _get_tags(self):
-        """For compatibility with scikit-learn >=0.21."""
-        return {
-            "allow_nan": False,
-            "array_api_support": False,
-            "binary_only": False,
-            "multilabel": False,
-            "multioutput": False,
-            "multioutput_only": False,
-            "no_validation": False,
-            "non_deterministic": False,
-            "pairwise": False,
-            "preserves_dtype": [np.float64],  # Only for transformers
-            "poor_score": True,
-            "requires_fit": True,
-            "requires_positive_X": False,
-            "requires_y": True,
-            "requires_positive_y": False,
-            "_skip_test": [
-                "check_fit2d_1sample",  # Can't fit 1D data
-            ],
-            "_xfail_checks": False,
-            "stateless": False,
-            "X_types": ["2darray"],
-        }
+    # def _get_tags(self):
+    #     """For compatibility with scikit-learn >=0.21."""
+    #     return {
+    #         "allow_nan": False,
+    #         "array_api_support": False,
+    #         "binary_only": False,
+    #         "multilabel": False,
+    #         "multioutput": False,
+    #         "multioutput_only": False,
+    #         "no_validation": False,
+    #         "non_deterministic": False,
+    #         "pairwise": False,
+    #         "preserves_dtype": [np.float64],  # Only for transformers
+    #         "poor_score": True,
+    #         "requires_fit": True,
+    #         "requires_positive_X": False,
+    #         "requires_y": True,
+    #         "requires_positive_y": False,
+    #         "_skip_test": [
+    #             "check_fit2d_1sample",  # Can't fit 1D data
+    #         ],
+    #         "_xfail_checks": False,
+    #         "stateless": False,
+    #         "X_types": ["2darray"],
+    #     }

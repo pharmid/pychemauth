@@ -36,7 +36,29 @@ class RobustScaler(TransformerMixin, BaseEstimator):
     A "pareto" setting is also available which will use the square root of
     the IQR instead.
     """
-
+    
+    _tags = {
+            "allow_nan": False,
+            "array_api_support": False,
+            "binary_only": False,
+            "multilabel": False,
+            "multioutput": False,
+            "multioutput_only": False,
+            "no_validation": False,
+            "non_deterministic": False,
+            "pairwise": False,
+            "preserves_dtype": [np.float64],  # Only for transformers
+            "poor_score": True,
+            "requires_fit": True,
+            "requires_positive_X": False,
+            "requires_y": False,
+            "requires_positive_y": False,
+            "_skip_test": [],
+            "_xfail_checks": False,
+            "stateless": False,
+            "X_types": ["2darray"],
+        }
+    
     def __init__(
         self, with_median=True, with_iqr=True, pareto=False, rng=(25.0, 75.0)
     ):
@@ -88,7 +110,7 @@ class RobustScaler(TransformerMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
         )
         if y is not None:  # Just so this passes sklearn api checks
             X, y = check_X_y(
@@ -97,7 +119,7 @@ class RobustScaler(TransformerMixin, BaseEstimator):
                 accept_sparse=False,
                 dtype=np.float64,
                 ensure_2d=True,
-                force_all_finite=True,
+                ensure_all_finite=True,
                 y_numeric=True,
             )
 
@@ -127,7 +149,7 @@ class RobustScaler(TransformerMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=True,
         )
         check_is_fitted(self, "is_fitted_")
@@ -162,7 +184,7 @@ class RobustScaler(TransformerMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=True,
         )
         check_is_fitted(self, "is_fitted_")
@@ -199,29 +221,29 @@ class RobustScaler(TransformerMixin, BaseEstimator):
 
         return self.transform(X)
 
-    def _get_tags(self):
-        """For compatibility with scikit-learn >=0.21."""
-        return {
-            "allow_nan": False,
-            "array_api_support": False,
-            "binary_only": False,
-            "multilabel": False,
-            "multioutput": False,
-            "multioutput_only": False,
-            "no_validation": False,
-            "non_deterministic": False,
-            "pairwise": False,
-            "preserves_dtype": [np.float64],  # Only for transformers
-            "poor_score": True,
-            "requires_fit": True,
-            "requires_positive_X": False,
-            "requires_y": False,
-            "requires_positive_y": False,
-            "_skip_test": [],
-            "_xfail_checks": False,
-            "stateless": False,
-            "X_types": ["2darray"],
-        }
+    # def _get_tags(self):
+    #     """For compatibility with scikit-learn >=0.21."""
+    #     return {
+    #         "allow_nan": False,
+    #         "array_api_support": False,
+    #         "binary_only": False,
+    #         "multilabel": False,
+    #         "multioutput": False,
+    #         "multioutput_only": False,
+    #         "no_validation": False,
+    #         "non_deterministic": False,
+    #         "pairwise": False,
+    #         "preserves_dtype": [np.float64],  # Only for transformers
+    #         "poor_score": True,
+    #         "requires_fit": True,
+    #         "requires_positive_X": False,
+    #         "requires_y": False,
+    #         "requires_positive_y": False,
+    #         "_skip_test": [],
+    #         "_xfail_checks": False,
+    #         "stateless": False,
+    #         "X_types": ["2darray"],
+    #     }
 
 
 class CorrectedScaler:
@@ -254,6 +276,28 @@ class CorrectedScaler:
     this corrected standard deviation instead.
     """
 
+    _tags = {
+            "allow_nan": False,
+            "array_api_support": False,
+            "binary_only": False,
+            "multilabel": False,
+            "multioutput": False,
+            "multioutput_only": False,
+            "no_validation": False,
+            "non_deterministic": False,
+            "pairwise": False,
+            "preserves_dtype": [np.float64],  # Only for transformers
+            "poor_score": True,
+            "requires_fit": True,
+            "requires_positive_X": False,
+            "requires_y": False,
+            "requires_positive_y": False,
+            "_skip_test": [],
+            "_xfail_checks": False,
+            "stateless": False,
+            "X_types": ["2darray"],
+        }
+    
     def __init__(
         self, with_mean=True, with_std=True, pareto=False, biased=False
     ):
@@ -305,7 +349,7 @@ class CorrectedScaler:
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
         )
         if y is not None:  # Just so this passes sklearn api checks
             X, y = check_X_y(
@@ -314,7 +358,7 @@ class CorrectedScaler:
                 accept_sparse=False,
                 dtype=np.float64,
                 ensure_2d=True,
-                force_all_finite=True,
+                ensure_all_finite=True,
                 y_numeric=True,
             )
 
@@ -347,7 +391,7 @@ class CorrectedScaler:
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=True,
         )
         if X.shape[1] != self.n_features_in_:
@@ -389,7 +433,7 @@ class CorrectedScaler:
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=True,
         )
         if X.shape[1] != self.n_features_in_:
@@ -425,26 +469,26 @@ class CorrectedScaler:
 
         return self.transform(X)
 
-    def _get_tags(self):
-        """For compatibility with scikit-learn >=0.21."""
-        return {
-            "allow_nan": False,
-            "array_api_support": False,
-            "binary_only": False,
-            "multilabel": False,
-            "multioutput": False,
-            "multioutput_only": False,
-            "no_validation": False,
-            "non_deterministic": False,
-            "pairwise": False,
-            "preserves_dtype": [np.float64],  # Only for transformers
-            "poor_score": True,
-            "requires_fit": True,
-            "requires_positive_X": False,
-            "requires_y": False,
-            "requires_positive_y": False,
-            "_skip_test": [],
-            "_xfail_checks": False,
-            "stateless": False,
-            "X_types": ["2darray"],
-        }
+    # def _get_tags(self):
+    #     """For compatibility with scikit-learn >=0.21."""
+    #     return {
+    #         "allow_nan": False,
+    #         "array_api_support": False,
+    #         "binary_only": False,
+    #         "multilabel": False,
+    #         "multioutput": False,
+    #         "multioutput_only": False,
+    #         "no_validation": False,
+    #         "non_deterministic": False,
+    #         "pairwise": False,
+    #         "preserves_dtype": [np.float64],  # Only for transformers
+    #         "poor_score": True,
+    #         "requires_fit": True,
+    #         "requires_positive_X": False,
+    #         "requires_y": False,
+    #         "requires_positive_y": False,
+    #         "_skip_test": [],
+    #         "_xfail_checks": False,
+    #         "stateless": False,
+    #         "X_types": ["2darray"],
+    #     }

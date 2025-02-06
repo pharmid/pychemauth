@@ -79,6 +79,28 @@ class PCA(BaseEstimator):  # Not a proper classifer by sklearn standards
     Rodionova, O., Journal of Chemometrics 28 (2014) 429-438.
     """
 
+    _tags = {
+            "allow_nan": False,
+            "array_api_support": False,
+            "binary_only": False,
+            "multilabel": False,
+            "multioutput": False,
+            "multioutput_only": False,
+            "no_validation": False,
+            "non_deterministic": False,
+            "pairwise": False,
+            "preserves_dtype": [np.float64],  # Only for transformers
+            "poor_score": True,
+            "requires_fit": True,
+            "requires_positive_X": False,
+            "requires_y": False,
+            "requires_positive_y": False,
+            "_skip_test": ["check_fit2d_1sample"],  # Can't fit 1D
+            "_xfail_checks": False,
+            "stateless": False,
+            "X_types": ["2darray"],
+        }
+    
     def __init__(
         self,
         n_components=1,
@@ -141,7 +163,7 @@ class PCA(BaseEstimator):  # Not a proper classifer by sklearn standards
                 accept_sparse=False,
                 dtype=np.float64,
                 ensure_2d=True,
-                force_all_finite=True,
+                ensure_all_finite=True,
                 y_numeric=False,
                 copy=False,
             )
@@ -164,7 +186,7 @@ class PCA(BaseEstimator):  # Not a proper classifer by sklearn standards
                 accept_sparse=False,
                 dtype=np.float64,
                 ensure_2d=True,
-                force_all_finite=True,
+                ensure_all_finite=True,
                 copy=True,
             )
             self.n_features_in_ = self.__X_.shape[1]
@@ -342,7 +364,7 @@ class PCA(BaseEstimator):  # Not a proper classifer by sklearn standards
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -364,7 +386,7 @@ class PCA(BaseEstimator):  # Not a proper classifer by sklearn standards
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -571,7 +593,7 @@ class PCA(BaseEstimator):  # Not a proper classifer by sklearn standards
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=True,
         )
         if X.shape[1] != self.n_features_in_:
@@ -646,7 +668,7 @@ class PCA(BaseEstimator):  # Not a proper classifer by sklearn standards
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             y_numeric=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -756,7 +778,7 @@ class PCA(BaseEstimator):  # Not a proper classifer by sklearn standards
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -873,26 +895,26 @@ class PCA(BaseEstimator):  # Not a proper classifer by sklearn standards
 
         return axis
 
-    def _get_tags(self):
-        """For compatibility with scikit-learn >=0.21."""
-        return {
-            "allow_nan": False,
-            "array_api_support": False,
-            "binary_only": False,
-            "multilabel": False,
-            "multioutput": False,
-            "multioutput_only": False,
-            "no_validation": False,
-            "non_deterministic": False,
-            "pairwise": False,
-            "preserves_dtype": [np.float64],  # Only for transformers
-            "poor_score": True,
-            "requires_fit": True,
-            "requires_positive_X": False,
-            "requires_y": False,
-            "requires_positive_y": False,
-            "_skip_test": ["check_fit2d_1sample"],  # Can't fit 1D
-            "_xfail_checks": False,
-            "stateless": False,
-            "X_types": ["2darray"],
-        }
+    # def _get_tags(self):
+    #     """For compatibility with scikit-learn >=0.21."""
+    #     return {
+    #         "allow_nan": False,
+    #         "array_api_support": False,
+    #         "binary_only": False,
+    #         "multilabel": False,
+    #         "multioutput": False,
+    #         "multioutput_only": False,
+    #         "no_validation": False,
+    #         "non_deterministic": False,
+    #         "pairwise": False,
+    #         "preserves_dtype": [np.float64],  # Only for transformers
+    #         "poor_score": True,
+    #         "requires_fit": True,
+    #         "requires_positive_X": False,
+    #         "requires_y": False,
+    #         "requires_positive_y": False,
+    #         "_skip_test": ["check_fit2d_1sample"],  # Can't fit 1D
+    #         "_xfail_checks": False,
+    #         "stateless": False,
+    #         "X_types": ["2darray"],
+    #     }

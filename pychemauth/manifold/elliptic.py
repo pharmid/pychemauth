@@ -22,7 +22,28 @@ from pychemauth.utils import (
 
 class _PassthroughDR(TransformerMixin, BaseEstimator):
     """Allow data to pass through without modification."""
-
+    _tags = {
+            "allow_nan": False,  # Still enforce all to be finite
+            "array_api_support": False,
+            "binary_only": False,
+            "multilabel": False,
+            "multioutput": False,
+            "multioutput_only": False,
+            "no_validation": True,  # Just a passthrough
+            "non_deterministic": False,
+            "pairwise": False,
+            "preserves_dtype": [],  # Only for transformers
+            "poor_score": True,
+            "requires_fit": True,
+            "requires_positive_X": False,
+            "requires_y": False,
+            "requires_positive_y": False,
+            "_skip_test": [],
+            "_xfail_checks": False,
+            "stateless": False,
+            "X_types": ["2darray"],
+        }
+    
     def __init__(self, n_components=0):
         """Initialize the class."""
         self.set_params(
@@ -52,7 +73,7 @@ class _PassthroughDR(TransformerMixin, BaseEstimator):
                 accept_sparse=False,
                 dtype="numeric",
                 ensure_2d=True,
-                force_all_finite=True,
+                ensure_all_finite=True,
                 y_numeric=False,
             )
         else:
@@ -61,7 +82,7 @@ class _PassthroughDR(TransformerMixin, BaseEstimator):
                 accept_sparse=False,
                 dtype="numeric",
                 ensure_2d=True,
-                force_all_finite=True,
+                ensure_all_finite=True,
             )
 
         self.n_features_in_ = X_.shape[1]
@@ -79,7 +100,7 @@ class _PassthroughDR(TransformerMixin, BaseEstimator):
             accept_sparse=False,
             dtype="numeric",
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
         )  # For the sake of sklearn estimator checks
         if X_.shape[1] != self.n_features_in_:
             raise ValueError(
@@ -92,29 +113,29 @@ class _PassthroughDR(TransformerMixin, BaseEstimator):
         """Fit and transform."""
         return self.fit(X).transform(X)
 
-    def _get_tags(self):
-        """For compatibility with scikit-learn >=0.21."""
-        return {
-            "allow_nan": False,  # Still enforce all to be finite
-            "array_api_support": False,
-            "binary_only": False,
-            "multilabel": False,
-            "multioutput": False,
-            "multioutput_only": False,
-            "no_validation": True,  # Just a passthrough
-            "non_deterministic": False,
-            "pairwise": False,
-            "preserves_dtype": [],  # Only for transformers
-            "poor_score": True,
-            "requires_fit": True,
-            "requires_positive_X": False,
-            "requires_y": False,
-            "requires_positive_y": False,
-            "_skip_test": [],
-            "_xfail_checks": False,
-            "stateless": False,
-            "X_types": ["2darray"],
-        }
+    # def _get_tags(self):
+    #     """For compatibility with scikit-learn >=0.21."""
+    #     return {
+    #         "allow_nan": False,  # Still enforce all to be finite
+    #         "array_api_support": False,
+    #         "binary_only": False,
+    #         "multilabel": False,
+    #         "multioutput": False,
+    #         "multioutput_only": False,
+    #         "no_validation": True,  # Just a passthrough
+    #         "non_deterministic": False,
+    #         "pairwise": False,
+    #         "preserves_dtype": [],  # Only for transformers
+    #         "poor_score": True,
+    #         "requires_fit": True,
+    #         "requires_positive_X": False,
+    #         "requires_y": False,
+    #         "requires_positive_y": False,
+    #         "_skip_test": [],
+    #         "_xfail_checks": False,
+    #         "stateless": False,
+    #         "X_types": ["2darray"],
+    #     }
 
 
 class EllipticManifold_Authenticator(ClassifierMixin, BaseEstimator):
@@ -202,7 +223,31 @@ class EllipticManifold_Authenticator(ClassifierMixin, BaseEstimator):
     [4] "Multivariate class modeling for the verification of food-authenticity
     claims," Oliveri, P., and Downey, G., TrAC Trends in Anal. Chem. 35 (2012) 74-86.
     """
-
+    
+    _tags = {
+            "allow_nan": False,
+            "array_api_support": False,
+            "binary_only": False,
+            "multilabel": False,
+            "multioutput": False,
+            "multioutput_only": False,
+            "no_validation": False,
+            "non_deterministic": False,
+            "pairwise": False,
+            "preserves_dtype": [],
+            "poor_score": True,
+            "requires_fit": True,
+            "requires_positive_X": False,
+            "requires_y": True,
+            "requires_positive_y": False,
+            "_skip_test": [
+                "check_estimators_dtypes",  # sklearn's example create singular matrices preventing fit
+            ],
+            "_xfail_checks": False,
+            "stateless": False,
+            "X_types": ["2darray"],
+        }
+    
     def __init__(
         self,
         alpha=0.05,
@@ -280,7 +325,7 @@ class EllipticManifold_Authenticator(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             y_numeric=False,
         )
         self.n_features_in_ = X.shape[1]
@@ -327,7 +372,7 @@ class EllipticManifold_Authenticator(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
         )
         if X.shape[1] != self.n_features_in_:
             raise ValueError(
@@ -379,7 +424,7 @@ class EllipticManifold_Authenticator(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
         )
         if X.shape[1] != self.n_features_in_:
             raise ValueError(
@@ -408,7 +453,7 @@ class EllipticManifold_Authenticator(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
         )
         if X.shape[1] != self.n_features_in_:
             raise ValueError(
@@ -462,7 +507,7 @@ class EllipticManifold_Authenticator(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             y_numeric=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -521,7 +566,7 @@ class EllipticManifold_Authenticator(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             y_numeric=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -571,31 +616,31 @@ class EllipticManifold_Authenticator(ClassifierMixin, BaseEstimator):
         }
         return metrics
 
-    def _get_tags(self):
-        """For compatibility with scikit-learn >=0.21."""
-        return {
-            "allow_nan": False,
-            "array_api_support": False,
-            "binary_only": False,
-            "multilabel": False,
-            "multioutput": False,
-            "multioutput_only": False,
-            "no_validation": False,
-            "non_deterministic": False,
-            "pairwise": False,
-            "preserves_dtype": [],
-            "poor_score": True,
-            "requires_fit": True,
-            "requires_positive_X": False,
-            "requires_y": True,
-            "requires_positive_y": False,
-            "_skip_test": [
-                "check_estimators_dtypes",  # sklearn's example create singular matrices preventing fit
-            ],
-            "_xfail_checks": False,
-            "stateless": False,
-            "X_types": ["2darray"],
-        }
+    # def _get_tags(self):
+    #     """For compatibility with scikit-learn >=0.21."""
+    #     return {
+    #         "allow_nan": False,
+    #         "array_api_support": False,
+    #         "binary_only": False,
+    #         "multilabel": False,
+    #         "multioutput": False,
+    #         "multioutput_only": False,
+    #         "no_validation": False,
+    #         "non_deterministic": False,
+    #         "pairwise": False,
+    #         "preserves_dtype": [],
+    #         "poor_score": True,
+    #         "requires_fit": True,
+    #         "requires_positive_X": False,
+    #         "requires_y": True,
+    #         "requires_positive_y": False,
+    #         "_skip_test": [
+    #             "check_estimators_dtypes",  # sklearn's example create singular matrices preventing fit
+    #         ],
+    #         "_xfail_checks": False,
+    #         "stateless": False,
+    #         "X_types": ["2darray"],
+    #     }
 
 
 class EllipticManifold_Model(BaseEstimator, ClassifierMixin):
@@ -708,6 +753,30 @@ class EllipticManifold_Model(BaseEstimator, ClassifierMixin):
     Rodionova, O., Journal of Chemometrics 28 (2014) 429-438.
     """
 
+    _tags = {
+            "allow_nan": False,
+            "array_api_support": False,
+            "binary_only": False,
+            "multilabel": False,
+            "multioutput": False,
+            "multioutput_only": False,
+            "no_validation": False,
+            "non_deterministic": False,
+            "pairwise": False,
+            "preserves_dtype": [],
+            "poor_score": True,
+            "requires_fit": True,
+            "requires_positive_X": False,
+            "requires_y": False,
+            "requires_positive_y": False,
+            "_skip_test": [
+                "check_estimators_dtypes"  # sklearn passes multiple classes during training
+            ],
+            "_xfail_checks": False,
+            "stateless": False,
+            "X_types": ["2darray"],
+        }
+    
     def __init__(
         self,
         alpha,
@@ -755,7 +824,7 @@ class EllipticManifold_Model(BaseEstimator, ClassifierMixin):
                 accept_sparse=False,
                 dtype=np.float64,
                 ensure_2d=True,
-                force_all_finite=True,
+                ensure_all_finite=True,
                 copy=False,
             )
         else:
@@ -765,7 +834,7 @@ class EllipticManifold_Model(BaseEstimator, ClassifierMixin):
                 accept_sparse=False,
                 dtype=np.float64,
                 ensure_2d=True,
-                force_all_finite=True,
+                ensure_all_finite=True,
                 y_numeric=False,
                 copy=False,
             )
@@ -1398,28 +1467,28 @@ class EllipticManifold_Model(BaseEstimator, ClassifierMixin):
 
         return ax
 
-    def _get_tags(self):
-        """For compatibility with scikit-learn >=0.21."""
-        return {
-            "allow_nan": False,
-            "array_api_support": False,
-            "binary_only": False,
-            "multilabel": False,
-            "multioutput": False,
-            "multioutput_only": False,
-            "no_validation": False,
-            "non_deterministic": False,
-            "pairwise": False,
-            "preserves_dtype": [],
-            "poor_score": True,
-            "requires_fit": True,
-            "requires_positive_X": False,
-            "requires_y": False,
-            "requires_positive_y": False,
-            "_skip_test": [
-                "check_estimators_dtypes"  # sklearn passes multiple classes during training
-            ],
-            "_xfail_checks": False,
-            "stateless": False,
-            "X_types": ["2darray"],
-        }
+    # def _get_tags(self):
+    #     """For compatibility with scikit-learn >=0.21."""
+    #     return {
+    #         "allow_nan": False,
+    #         "array_api_support": False,
+    #         "binary_only": False,
+    #         "multilabel": False,
+    #         "multioutput": False,
+    #         "multioutput_only": False,
+    #         "no_validation": False,
+    #         "non_deterministic": False,
+    #         "pairwise": False,
+    #         "preserves_dtype": [],
+    #         "poor_score": True,
+    #         "requires_fit": True,
+    #         "requires_positive_X": False,
+    #         "requires_y": False,
+    #         "requires_positive_y": False,
+    #         "_skip_test": [
+    #             "check_estimators_dtypes"  # sklearn passes multiple classes during training
+    #         ],
+    #         "_xfail_checks": False,
+    #         "stateless": False,
+    #         "X_types": ["2darray"],
+    #     }
