@@ -141,7 +141,7 @@ class PCA(BaseEstimator):  # Not a proper classifer by sklearn standards
                 accept_sparse=False,
                 dtype=np.float64,
                 ensure_2d=True,
-                force_all_finite=True,
+                ensure_all_finite=True,
                 y_numeric=False,
                 copy=False,
             )
@@ -164,7 +164,7 @@ class PCA(BaseEstimator):  # Not a proper classifer by sklearn standards
                 accept_sparse=False,
                 dtype=np.float64,
                 ensure_2d=True,
-                force_all_finite=True,
+                ensure_all_finite=True,
                 copy=True,
             )
             self.n_features_in_ = self.__X_.shape[1]
@@ -342,7 +342,7 @@ class PCA(BaseEstimator):  # Not a proper classifer by sklearn standards
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -364,7 +364,7 @@ class PCA(BaseEstimator):  # Not a proper classifer by sklearn standards
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -571,7 +571,7 @@ class PCA(BaseEstimator):  # Not a proper classifer by sklearn standards
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=True,
         )
         if X.shape[1] != self.n_features_in_:
@@ -646,7 +646,7 @@ class PCA(BaseEstimator):  # Not a proper classifer by sklearn standards
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             y_numeric=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -756,7 +756,7 @@ class PCA(BaseEstimator):  # Not a proper classifer by sklearn standards
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=False,
         )
         if X.shape[1] != self.n_features_in_:

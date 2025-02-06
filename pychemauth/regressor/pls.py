@@ -169,7 +169,7 @@ class PLS(RegressorMixin, BaseEstimator):
                 accept_sparse=False,
                 dtype=np.float64,
                 ensure_2d=True,
-                force_all_finite=True,
+                ensure_all_finite=True,
                 y_numeric=True,
                 copy=True,
             )
@@ -376,7 +376,7 @@ class PLS(RegressorMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -425,7 +425,7 @@ class PLS(RegressorMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             y_numeric=True,
             copy=False,
         )
@@ -467,7 +467,7 @@ class PLS(RegressorMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -518,7 +518,7 @@ class PLS(RegressorMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -607,7 +607,7 @@ class PLS(RegressorMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             y_numeric=True,
             copy=False,
         )
@@ -715,7 +715,7 @@ class PLS(RegressorMixin, BaseEstimator):
             accept_sparse=False,
             dtype="numeric",
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             y_numeric=True,
             copy=True,
         )

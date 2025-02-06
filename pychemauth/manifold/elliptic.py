@@ -52,7 +52,7 @@ class _PassthroughDR(TransformerMixin, BaseEstimator):
                 accept_sparse=False,
                 dtype="numeric",
                 ensure_2d=True,
-                force_all_finite=True,
+                ensure_all_finite=True,
                 y_numeric=False,
             )
         else:
@@ -61,7 +61,7 @@ class _PassthroughDR(TransformerMixin, BaseEstimator):
                 accept_sparse=False,
                 dtype="numeric",
                 ensure_2d=True,
-                force_all_finite=True,
+                ensure_all_finite=True,
             )
 
         self.n_features_in_ = X_.shape[1]
@@ -79,7 +79,7 @@ class _PassthroughDR(TransformerMixin, BaseEstimator):
             accept_sparse=False,
             dtype="numeric",
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
         )  # For the sake of sklearn estimator checks
         if X_.shape[1] != self.n_features_in_:
             raise ValueError(
@@ -280,7 +280,7 @@ class EllipticManifold_Authenticator(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             y_numeric=False,
         )
         self.n_features_in_ = X.shape[1]
@@ -327,7 +327,7 @@ class EllipticManifold_Authenticator(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
         )
         if X.shape[1] != self.n_features_in_:
             raise ValueError(
@@ -379,7 +379,7 @@ class EllipticManifold_Authenticator(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
         )
         if X.shape[1] != self.n_features_in_:
             raise ValueError(
@@ -408,7 +408,7 @@ class EllipticManifold_Authenticator(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
         )
         if X.shape[1] != self.n_features_in_:
             raise ValueError(
@@ -462,7 +462,7 @@ class EllipticManifold_Authenticator(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             y_numeric=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -521,7 +521,7 @@ class EllipticManifold_Authenticator(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             y_numeric=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -755,7 +755,7 @@ class EllipticManifold_Model(BaseEstimator, ClassifierMixin):
                 accept_sparse=False,
                 dtype=np.float64,
                 ensure_2d=True,
-                force_all_finite=True,
+                ensure_all_finite=True,
                 copy=False,
             )
         else:
@@ -765,7 +765,7 @@ class EllipticManifold_Model(BaseEstimator, ClassifierMixin):
                 accept_sparse=False,
                 dtype=np.float64,
                 ensure_2d=True,
-                force_all_finite=True,
+                ensure_all_finite=True,
                 y_numeric=False,
                 copy=False,
             )

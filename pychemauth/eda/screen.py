@@ -100,7 +100,7 @@ class RedFlags:
             ensure_min_samples=1,  # Min 1 row
             ensure_min_features=1,  # Min 1 column
             y_numeric=False,  # y can be anything, not just numbers
-            force_all_finite=False,  # Check this later - NaN might be intentional for imputation
+            ensure_all_finite=False,  # Check this later - NaN might be intentional for imputation
         )
 
         # Check that y is either all numbers or all strings

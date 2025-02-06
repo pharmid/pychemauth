@@ -157,7 +157,7 @@ class CollinearFeatureSelector(TransformerMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=True,
         )
         if y is not None:  # Just so this passes sklearn api checks
@@ -167,7 +167,7 @@ class CollinearFeatureSelector(TransformerMixin, BaseEstimator):
                 accept_sparse=False,
                 dtype=np.float64,
                 ensure_2d=True,
-                force_all_finite=True,
+                ensure_all_finite=True,
                 y_numeric=False,
             )
         self.n_features_in_ = X.shape[1]
@@ -231,7 +231,7 @@ class CollinearFeatureSelector(TransformerMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=True,
         )
         if X_.shape[1] != self.n_features_in_:
@@ -496,7 +496,7 @@ class JensenShannonDivergence(TransformerMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             y_numeric=False,
             copy=True,
         )
@@ -647,7 +647,7 @@ class JensenShannonDivergence(TransformerMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
         )
         if X.shape[1] != self.n_features_in_:
             raise ValueError(
@@ -1000,7 +1000,7 @@ class BorutaSHAPFeatureSelector(TransformerMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             y_numeric=False,
         )
         self.n_features_in_ = X_.shape[1]
@@ -1067,7 +1067,7 @@ class BorutaSHAPFeatureSelector(TransformerMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
         )
         if X_.shape[1] != self.n_features_in_:
             raise ValueError(

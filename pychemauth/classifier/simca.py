@@ -188,7 +188,7 @@ class SIMCA_Authenticator(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             y_numeric=False,
             copy=False,
         )
@@ -246,7 +246,7 @@ class SIMCA_Authenticator(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=False,
         )
         return self.__model_.transform(X)
@@ -296,7 +296,7 @@ class SIMCA_Authenticator(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -326,7 +326,7 @@ class SIMCA_Authenticator(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -366,7 +366,7 @@ class SIMCA_Authenticator(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -466,7 +466,7 @@ class SIMCA_Authenticator(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             y_numeric=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -633,7 +633,7 @@ class SIMCA_Model(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=True,
         )
         if y is not None:  # Just so this passes sklearn api checks
@@ -643,7 +643,7 @@ class SIMCA_Model(ClassifierMixin, BaseEstimator):
                 accept_sparse=False,
                 dtype=np.float64,
                 ensure_2d=True,
-                force_all_finite=True,
+                ensure_all_finite=True,
                 y_numeric=False,
                 copy=True,
             )
@@ -709,7 +709,7 @@ class SIMCA_Model(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -761,7 +761,7 @@ class SIMCA_Model(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -903,7 +903,7 @@ class SIMCA_Model(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             y_numeric=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -951,7 +951,7 @@ class SIMCA_Model(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             y_numeric=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -985,7 +985,7 @@ class SIMCA_Model(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             y_numeric=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -1156,7 +1156,7 @@ class DDSIMCA_Model(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=False,
         )
         if y is not None:  # Just so this passes sklearn api checks
@@ -1166,7 +1166,7 @@ class DDSIMCA_Model(ClassifierMixin, BaseEstimator):
                 accept_sparse=False,
                 dtype=np.float64,
                 ensure_2d=True,
-                force_all_finite=True,
+                ensure_all_finite=True,
                 y_numeric=False,
             )
 
@@ -1361,7 +1361,7 @@ class DDSIMCA_Model(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -1396,7 +1396,7 @@ class DDSIMCA_Model(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=False,
         )
         if X_raw.shape[1] != self.n_features_in_:
@@ -1559,7 +1559,7 @@ class DDSIMCA_Model(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             y_numeric=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -1607,7 +1607,7 @@ class DDSIMCA_Model(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             y_numeric=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -1641,7 +1641,7 @@ class DDSIMCA_Model(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             y_numeric=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -1728,7 +1728,7 @@ class DDSIMCA_Model(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=False,
         )
         if X.shape[1] != self.n_features_in_:
@@ -1878,7 +1878,7 @@ class DDSIMCA_Model(ClassifierMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             y_numeric=False,
         )
         if X.shape[1] != self.n_features_in_:

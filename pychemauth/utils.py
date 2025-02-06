@@ -276,7 +276,7 @@ def _adjusted_covariance(X, method, center, dim):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=False,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=True,
         )
     if adjust.shape != (dim,):
@@ -348,7 +348,7 @@ class CovarianceEllipse(ControlBoundary):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=True,
         )
         if X_.shape[1] < 2:
@@ -455,7 +455,7 @@ class OneDimLimits(ControlBoundary):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=True,
         )
         if X_.shape[1] != 1:

@@ -96,7 +96,7 @@ class MSC(TransformerMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
         )
         if y is not None:  # Just so this passes sklearn api checks
             X, y = check_X_y(
@@ -105,7 +105,7 @@ class MSC(TransformerMixin, BaseEstimator):
                 accept_sparse=False,
                 dtype=np.float64,
                 ensure_2d=True,
-                force_all_finite=True,
+                ensure_all_finite=True,
                 y_numeric=True,
             )
 
@@ -144,7 +144,7 @@ class MSC(TransformerMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=True,
         )  # Force a copy
         check_is_fitted(self, "is_fitted_")
@@ -341,7 +341,7 @@ class SNV(TransformerMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
         )
         if y is not None:  # Just so this passes sklearn api checks
             X, y = check_X_y(
@@ -350,7 +350,7 @@ class SNV(TransformerMixin, BaseEstimator):
                 accept_sparse=False,
                 dtype=np.float64,
                 ensure_2d=True,
-                force_all_finite=True,
+                ensure_all_finite=True,
                 y_numeric=True,
             )
 
@@ -381,7 +381,7 @@ class SNV(TransformerMixin, BaseEstimator):
             copy=True,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
         )  # Force a copy
         check_is_fitted(self, "is_fitted_")
         if X.shape[1] != self.n_features_in_:
@@ -568,7 +568,7 @@ class SavGol(TransformerMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
         )
 
         try:
@@ -613,7 +613,7 @@ class SavGol(TransformerMixin, BaseEstimator):
             accept_sparse=False,
             dtype=np.float64,
             ensure_2d=True,
-            force_all_finite=True,
+            ensure_all_finite=True,
         )
         check_is_fitted(self, "is_fitted_")
         if X.shape[1] != self.n_features_in_:

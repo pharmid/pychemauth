@@ -109,7 +109,7 @@ class LOD(TransformerMixin, BaseEstimator):
             X,
             accept_sparse=False,
             dtype=np.float64,
-            force_all_finite="allow-nan",
+            ensure_all_finite="allow-nan",
             ensure_2d=True,
             copy=True,
         )
@@ -121,7 +121,7 @@ class LOD(TransformerMixin, BaseEstimator):
                 self.lod,
                 accept_sparse=False,
                 dtype=np.float64,
-                force_all_finite="allow-nan",
+                ensure_all_finite="allow-nan",
                 ensure_2d=False,
                 copy=True,
             )
@@ -137,7 +137,7 @@ class LOD(TransformerMixin, BaseEstimator):
                         self.lod_[mask],
                         accept_sparse=False,
                         dtype=np.float64,
-                        force_all_finite=True,
+                        ensure_all_finite=True,
                         ensure_2d=False,
                         copy=False,
                     )
@@ -208,7 +208,7 @@ class LOD(TransformerMixin, BaseEstimator):
             X,
             accept_sparse=False,
             dtype=np.float64,
-            force_all_finite="allow-nan",
+            ensure_all_finite="allow-nan",
             ensure_2d=True,
             copy=True,
         )
@@ -421,7 +421,7 @@ class PCA_IA(TransformerMixin, BaseEstimator):
             X,
             accept_sparse=False,
             dtype=np.float64,
-            force_all_finite="allow-nan",
+            ensure_all_finite="allow-nan",
             ensure_2d=True,
             copy=True,
         )
@@ -464,7 +464,7 @@ n_features [{}])] = [{}, {}].".format(
         X = check_array(
             X,
             accept_sparse=False,
-            force_all_finite="allow-nan",
+            ensure_all_finite="allow-nan",
             ensure_2d=True,
             copy=True,
             dtype=np.float64,
@@ -575,7 +575,7 @@ n_features [{}])] = [{}, {}].".format(
         X = check_array(
             X,
             accept_sparse=False,
-            force_all_finite="allow-nan",
+            ensure_all_finite="allow-nan",
             ensure_2d=True,
             copy=True,
             dtype=np.float64,
@@ -622,7 +622,7 @@ n_features [{}])] = [{}, {}].".format(
         X = check_array(
             X,
             accept_sparse=False,
-            force_all_finite="allow-nan",
+            ensure_all_finite="allow-nan",
             ensure_2d=True,
             copy=True,
             dtype=np.float64,
@@ -801,7 +801,7 @@ class PLS_IA(TransformerMixin, BaseEstimator):
         self.__Xtrain_ = check_array(
             X,
             accept_sparse=False,
-            force_all_finite="allow-nan",
+            ensure_all_finite="allow-nan",
             ensure_2d=True,
             copy=True,
             dtype=np.float64,
@@ -811,7 +811,7 @@ class PLS_IA(TransformerMixin, BaseEstimator):
         self.__ytrain_ = check_array(
             y,
             accept_sparse=False,
-            force_all_finite=True,
+            ensure_all_finite=True,
             copy=True,
             dtype=np.float64,
             ensure_2d=False,  # Will be converted next
@@ -861,7 +861,7 @@ n_features [{}])] = [{}, {}].".format(
         X = check_array(
             X,
             accept_sparse=False,
-            force_all_finite="allow-nan",
+            ensure_all_finite="allow-nan",
             ensure_2d=True,
             copy=True,
             dtype=np.float64,
@@ -875,7 +875,7 @@ n_features [{}])] = [{}, {}].".format(
             y = check_array(
                 y,
                 accept_sparse=False,
-                force_all_finite=True,
+                ensure_all_finite=True,
                 copy=True,
                 dtype=np.float64,
                 ensure_2d=False,  # Will be converted next
@@ -1000,7 +1000,7 @@ n_features [{}])] = [{}, {}].".format(
         X = check_array(
             X,
             accept_sparse=False,
-            force_all_finite="allow-nan",
+            ensure_all_finite="allow-nan",
             ensure_2d=True,
             copy=True,
             dtype=np.float64,
@@ -1047,7 +1047,7 @@ n_features [{}])] = [{}, {}].".format(
         X = check_array(
             X,
             accept_sparse=False,
-            force_all_finite="allow-nan",
+            ensure_all_finite="allow-nan",
             ensure_2d=True,
             copy=True,
             dtype=np.float64,
